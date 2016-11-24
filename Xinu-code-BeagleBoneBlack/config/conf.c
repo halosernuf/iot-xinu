@@ -199,5 +199,12 @@ struct	dentry	devtab[NDEVS] =
 	  (void *)spiinit, (void *)ionull, (void *)ionull,
 	  (void *)ionull, (void *)ionull, (void *)ionull,
 	  (void *)ionull, (void *)ionull, (void *)spicontrol,
-	  (void *)0x481a0000, (void *)ionull, 0 }
+	  (void *)0x481a0000, (void *)ionull, 0 },
+
+/* DHT11_0 is dht11 */
+	{ 26, 0, "DHT11_0",
+	  (void *)ionull, (void *)ionull, (void *)ionull,
+	  (void *)dht11read, (void *)ionull, (void *)ionull,
+	  (void *)ionull, (void *)ionull, (void *)ionull,
+	  (void *)0x27, (void *)ionull, 0 }
 };

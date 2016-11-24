@@ -102,6 +102,13 @@ spi:
 		-r ionull	-g ionull	-p ionull
 		-w ionull	-s ionull	-n spicontrol
 		-intr ionull
+		
+dht11:
+	on dht11
+		-i ionull	-o ionull	-c ionull
+		-r dht11read	-g ionull	-p ionull
+		-w ionull	-s ionull	-n ionull
+		-intr ionull
 %%
 
 /* Actual device declarations that each give the name of a device that	*/
@@ -160,6 +167,9 @@ spi:
    SPI0 is spi on top csr 0x48030000
    SPI1 is spi on top csr 0x481A0000
 
+   /* DHT11 devices */
+   DHT11_0 is dht11 on dht11 csr 39
+   
 %%
 
 /* Configuration and Size Constants */
