@@ -109,6 +109,13 @@ dht11:
 		-r dht11read	-g ionull	-p ionull
 		-w ionull	-s ionull	-n ionull
 		-intr ionull
+		
+tmp36:
+	on tmp36
+		-i ionull	-o ionull	-c ionull
+		-r tmp36read	-g ionull	-p ionull
+		-w ionull	-s ionull	-n ionull
+		-intr ionull
 %%
 
 /* Actual device declarations that each give the name of a device that	*/
@@ -169,6 +176,9 @@ dht11:
 
    /* DHT11 devices */
    DHT11_0 is dht11 on dht11 csr 39
+   
+   /* TMP36 devices */
+   TMP36_0 is tmp36 on tmp36 csr 0
    
 %%
 

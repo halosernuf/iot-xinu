@@ -206,5 +206,12 @@ struct	dentry	devtab[NDEVS] =
 	  (void *)ionull, (void *)ionull, (void *)ionull,
 	  (void *)dht11read, (void *)ionull, (void *)ionull,
 	  (void *)ionull, (void *)ionull, (void *)ionull,
-	  (void *)0x27, (void *)ionull, 0 }
+	  (void *)0x27, (void *)ionull, 0 },
+
+/* TMP36_0 is tmp36 */
+	{ 27, 0, "TMP36_0",
+	  (void *)ionull, (void *)ionull, (void *)ionull,
+	  (void *)tmp36read, (void *)ionull, (void *)ionull,
+	  (void *)ionull, (void *)ionull, (void *)ionull,
+	  (void *)0x0, (void *)ionull, 0 }
 };

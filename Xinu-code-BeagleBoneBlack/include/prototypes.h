@@ -600,16 +600,14 @@ extern	syscall	yield(void);
 #define	ntohl(x)   (  (((x)>>24) & 0x000000ff) | (((x)>> 8) & 0x0000ff00) | \
 		      (((x)<< 8) & 0x00ff0000) | (((x)<<24) & 0xff000000) )
 
-/* in file DHT11_read.c */
-extern syscall DHT11_read(struct dentry *, uint32 *);
+/* in file readdht11.c */
+extern devcall readdht11(struct dentry *, uint32 *);
 
 /* in file dht11read.c */
+extern devcall dht11read(struct dentry *, void *, uint32);
 
-extern syscall dht11read(struct dentry *, void *, uint32);
+/* in file readtmp36.c */
+extern devcall readtmp36(struct dentry *, uint32 *);
 
-/* in file gpio_read.c */
-extern bool8 gpio_read(uint32);
-
-/* in file gpio_write.c */
-extern syscall gpio_write(uint32, bool8);
-
+/* in file tmp36read.c */
+extern devcall tmp36read (struct dentry*, void *, uint32);

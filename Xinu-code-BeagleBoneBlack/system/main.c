@@ -73,6 +73,7 @@ process udp_routine(){
 	uint32 slot;
 	char remoteipdot[]="192.168.1.21";
 	char msg_rvc[20];
+	memset((char *)&msg_rvc, '\0', sizeof(msg_rvc));
 	// char msg_snd[]
 	did32 i;
 	char ret[20];
@@ -82,7 +83,7 @@ process udp_routine(){
 	// uint16 remoteport=50001;
 	// uint16 localport=50001;
 	uint32 inlen;
-	
+	uint32 ipaddr=NetData.ipucast;
 	dot2ip((char *)&remoteipdot,&remoteip);
 	printf("udp start\n");
 	printf("%x",remoteip);
@@ -104,55 +105,44 @@ process udp_routine(){
 			printf("SYSERR\n");
 			continue;
 		}
-		// } else if(strcmp(msg_rvc,"Devices")){
-		// 	printf("MESSAGE ERROR\n");
-		// 	continue;
-		// }
 		printf("%s\n", msg_rvc);
-
-		for(i=26;i<NDEVS;i++){
-			printf("read device %s\n",devtab[i].dvname);
-			read(i,(char *)&ret,20);
-			sprintf(msg,"%s %d %s",devtab[i].dvname,i,ret);
-			printf("%s\n", msg);
+		if(strcmp(msg_rvc,"IP")==0){
+			sprintf(msg, "%d.%d.%d.%d",
+			(ipaddr>>24)&0xff, (ipaddr>>16)&0xff,
+			(ipaddr>>8)&0xff,ipaddr&0xff);
 			if(udp_sendto(slot,0xC0A80115,EDGE_PORT,(char*)&msg,sizeof(msg))!=OK){
 				printf("send error\n %s",msg);
 			}
-			memset((char *)&ret, 0x00, sizeof(ret));
-			memset((char *)&msg, 0x00, sizeof(msg));
-		}
-		
-		if(udp_sendto(slot,0xC0A80115,EDGE_PORT,(char*)&end_msg,sizeof(end_msg))!=OK){
+			printf("%s \n", msg);
+			// memset((char *)&ret, 0x00, sizeof(ret));
+			memset((char *)&msg, '\0', sizeof(msg));
+		}else if(strcmp(msg_rvc,"DEVICES")==0){
+			for(i=26;i<NDEVS;i++){
+				printf("read device %s\n",devtab[i].dvname);
+				read(i,(char *)&ret,20);
+				sprintf(msg,"%s %d %s",devtab[i].dvname,i,ret);
+				printf("%s \n", msg);
+				if(udp_sendto(slot,0xC0A80115,EDGE_PORT,(char*)&msg,sizeof(msg))!=OK){
+					printf("send error\n %s",msg);
+				}
+				memset((char *)&ret, '\0', sizeof(ret));
+				memset((char *)&msg, '\0', sizeof(msg));
+			}
+			//send ending
+			if(udp_sendto(slot,0xC0A80115,EDGE_PORT,(char*)&end_msg,sizeof(end_msg))!=OK){
 				printf("send error %s \n",msg);
+			}
+		}else{
+			printf("msg error\n");
 		}
-		// if(udp_sendto(slot,0xC0A80115,EDGE_PORT,(char*)&msg_snd,strlen((char *)&msg_snd))!=OK){
-		// 	printf("send error\n");
-		// }
-		printf("Success send \n");
+		//clear msg_rvc
+		memset((char *)&msg_rvc, '\0', sizeof(msg_rvc));
 	}
 }
 
 process	main(void)
 {
 	
-	// uint32* dht11_dat;
-	// int count=5;
-	// uint32 count_char=(count*sizeof(uint32))/(sizeof(char));
-	// char data[count_char];
-	// int i;
-	// while(1)
-	// {
-	// 	if(read(DHT11_0,(char *)data,count_char)==SYSERR){
-	// 		printf("SYSERR\n");
-	// 	}else{
-	// 		dht11_dat=(uint32 *)data;
-	// 		for(i=0;i<5;i++){
-	// 			printf("%d \n",*dht11_dat);
-	// 			dht11_dat++;
-	// 		}
-	// 	}
-	// 	sleep(10);
-	// }
 	resume(create(udp_routine, 4096, 50, "udp_routine", 0));
 	return OK;
     

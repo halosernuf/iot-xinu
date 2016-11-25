@@ -52,6 +52,7 @@ extern	struct	dentry	devtab[]; /* one entry per device */
 #define SPI0        24       /* type spi      */
 #define SPI1        25       /* type spi      */
 #define DHT11_0     26       /* type dht11    */
+#define TMP36_0     27       /* type tmp36    */
 
 /* Control block sizes */
 
@@ -67,9 +68,10 @@ extern	struct	dentry	devtab[]; /* one entry per device */
 #define	Nnam	1
 #define	Nspi	2
 #define	Ndht11	1
+#define	Ntmp36	1
 
 #define DEVMAXNAME 24
-#define NDEVS 27
+#define NDEVS 28
 
 
 /* Configuration and Size Constants */
