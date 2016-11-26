@@ -12,7 +12,7 @@ devcall	tmp36read (
     void* buf,
     uint32 count)
 {
-    uint32  retval;
+    uint32 retval;
     uint32 data;
     char ret[count];
     retval = readtmp36(devptr,(uint32 *)&data);

@@ -611,3 +611,15 @@ extern devcall readtmp36(struct dentry *, uint32 *);
 
 /* in file tmp36read.c */
 extern devcall tmp36read (struct dentry*, void *, uint32);
+
+/* in file ledread.c */
+extern devcall ledread (struct dentry*, void *, uint32);
+
+/* in file readled.c */
+extern devcall readled(struct dentry *, uint32 *);
+
+/* in file ledwrite.c */
+extern devcall ledwrite(struct dentry*, void *, uint32);
+
+/* in file writeled.c */
+extern devcall writeled(struct dentry *, uint32 *);

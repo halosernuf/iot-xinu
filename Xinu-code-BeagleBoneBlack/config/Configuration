@@ -116,6 +116,13 @@ tmp36:
 		-r tmp36read	-g ionull	-p ionull
 		-w ionull	-s ionull	-n ionull
 		-intr ionull
+		
+led:
+	on led
+		-i ionull	-o ionull	-c ionull
+		-r ledread	-g ionull	-p ionull
+		-w ledwrite	-s ionull	-n ionull
+		-intr ionull
 %%
 
 /* Actual device declarations that each give the name of a device that	*/
@@ -179,6 +186,10 @@ tmp36:
    
    /* TMP36 devices */
    TMP36_0 is tmp36 on tmp36 csr 0
+   
+   /* LED devices */
+   LED_0 is led on led csr 53
+   LED_1 is led on led csr 54
    
 %%
 

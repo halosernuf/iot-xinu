@@ -213,5 +213,19 @@ struct	dentry	devtab[NDEVS] =
 	  (void *)ionull, (void *)ionull, (void *)ionull,
 	  (void *)tmp36read, (void *)ionull, (void *)ionull,
 	  (void *)ionull, (void *)ionull, (void *)ionull,
-	  (void *)0x0, (void *)ionull, 0 }
+	  (void *)0x0, (void *)ionull, 0 },
+
+/* LED_0 is led */
+	{ 28, 0, "LED_0",
+	  (void *)ionull, (void *)ionull, (void *)ionull,
+	  (void *)ledread, (void *)ledwrite, (void *)ionull,
+	  (void *)ionull, (void *)ionull, (void *)ionull,
+	  (void *)0x35, (void *)ionull, 0 },
+
+/* LED_1 is led */
+	{ 29, 1, "LED_1",
+	  (void *)ionull, (void *)ionull, (void *)ionull,
+	  (void *)ledread, (void *)ledwrite, (void *)ionull,
+	  (void *)ionull, (void *)ionull, (void *)ionull,
+	  (void *)0x36, (void *)ionull, 0 }
 };
