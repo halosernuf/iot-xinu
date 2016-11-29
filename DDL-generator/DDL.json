@@ -1,0 +1,107 @@
+{
+	"Devices":[
+	{
+		"Description":{
+			"Name":"tmp36",
+			"Device_Type":"Sensor",
+			"Verbose_Description":"TMP36 Analog Temperature Sensor"
+		},
+		"Interface":{
+			"Signal":[
+				{
+					"id":"s1",
+					"Operation":"Input",
+					"Type":"Analog",
+					"Measurement":"ADC"
+				}
+			],
+			"Reading":[
+				{
+					"Type":"Sensor",
+					"From":"s1",
+					"Measurement":"Temperature",
+					"Unit":"Centigrade",
+					"Data_Type":"uint32",
+					"Return_Length":"1",
+					"Computation":{
+						"Type":"Formula",
+						"Expression": [
+							"s1[0] = (((s1[0]*1.8)/4095)-0.5)*100"
+						]
+					}
+				}
+			]
+		}
+	},
+	{
+		"Description":{
+			"Name":"dht11",
+			"Device_Type":"Sensor",
+			"Verbose_Description":"DHT11 basic temperature-humidity sensor"
+		},
+		"Interface":{
+			"Signal":[
+				{
+					"id":"s1",
+					"Operation":"Input",
+					"Type":"Digit",
+					"Measurement":"Digit"
+				}
+			],
+			"Reading":[
+				{
+					"id":"r1",
+					"From":"s1",
+					"Type":"Sensor",
+					"Measurement":"Humidity & Temperature",
+					"Unit":"",
+					"Data_Type":"uint32",
+					"Return_Length":"4",
+					"Computation":{
+						"Type":"Formula",
+						"Expression": [
+							""
+						]
+					}
+				}
+			]
+		}
+	},
+	{
+		"Description":{
+			"Name":"led",
+			"Device_Type":"Actuator",
+			"Verbose_Description":"LED"
+		},
+		"Interface":{
+			"Signal":[
+				{
+					"id":"s1",
+					"Operation":"Output",
+					"Type":"",
+					"Measurement":""
+				}
+			],
+			"Reading":[
+				{
+					"id":"r1",
+					"From":"s1",
+					"Type":"",
+					"Measurement":"",
+					"Unit":"",
+					"Data_Type":"uint32",
+					"Return_Length":"1",
+					"Computation":{
+						"Type":"Formula",
+						"Expression": [
+							""
+						]
+					}
+				}
+			]
+		}
+	}
+	]
+	
+	
+}

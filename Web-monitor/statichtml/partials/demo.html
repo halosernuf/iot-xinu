@@ -1,0 +1,186 @@
+<div id="wrapper">
+
+        <!-- Navigation -->
+        <nav class="navbar navbar-inverse navbar-fixed-top" role="navigation">
+            <!-- Brand and toggle get grouped for better mobile display -->
+            <div class="navbar-header">
+                <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-ex1-collapse">
+                    <span class="sr-only">Toggle navigation</span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                </button>
+                <a class="navbar-brand" href="index.html">Demo</a>
+            </div>
+            <!-- Top Menu Items -->
+           
+            <!-- Sidebar Menu Items - These collapse to the responsive navigation menu on small screens -->
+            <div class="collapse navbar-collapse navbar-ex1-collapse">
+                <ul class="nav navbar-nav side-nav">
+                   
+                    <li class="active">
+                        <a href=""><i class="fa fa-fw fa-table"></i> Tables</a>
+                    </li>
+                    
+                </ul>
+            </div>
+            <!-- /.navbar-collapse -->
+        </nav>
+
+        <div id="page-wrapper">
+
+            <div class="container-fluid">
+
+                <!-- Page Heading -->
+                <div class="row">
+                    <div class="col-lg-12">
+                        <h1 class="page-header">
+                            Tables
+                        </h1>
+                      
+                    </div>
+                </div>
+                <!-- /.row -->
+                <div class="row">
+                    <div class="col-lg-6">
+                        <h2><a  href=""  ng-click="updateB()" data-filter="*">Update Platforms</a></h2>
+                       
+                    </div>
+                    <div class="col-lg-6">
+                        <h2><a  href=""  ng-click="updateD()" data-filter="*">Update Devices</a></h2>
+                       
+                    </div>
+                    
+                </div>
+                <div class="row">
+                    <div class="col-lg-6">
+                        <h2>Platform</h2>
+                        <div class="table-responsive">
+                            <table class="table table-bordered table-hover">
+                                <thead>
+                                    <tr>
+                                    	<th>IP</th>
+                                    	
+                                      
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <tr ng-repeat="b in bbb">
+                                        <td>{{b.ip}}</td>
+                                        
+                                       
+                                        
+                                    </tr>
+                                    
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+                    <div class="col-lg-6">
+                        <h2>DHT11</h2>
+                        <div class="table-responsive">
+                            <table class="table table-bordered table-hover">
+                                <thead>
+                                    <tr>
+                                        <th>IP</th>
+                                        <th>Name</th>
+                                        <th>Tempature</th>
+                                        <th>Humidity</th>
+                                        <th>Operation</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <tr ng-repeat="d in dht">
+                                        <td>{{d.ip}}</td>
+                                        <td>{{d.type}}</td>
+                                        <td>{{d.tempature}}</td>
+                                        <td>{{d.humidity}}</td>
+                                        <td><a  href=""  ng-click="viewRecentDHT(d.ip,d.id)" data-filter="*">View</a></td>
+                                    </tr>
+                                    
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+                </div>
+                <!-- /.row -->
+
+                <div class="row">
+                    <div class="col-lg-6">
+                        <h2>LED</h2>
+                        <div class="table-responsive">
+                            <table class="table table-bordered table-hover">
+                                <thead>
+                                    <tr>
+                                    	<th>IP</th>
+                                    	<th>Name</th>
+                                        <th>Status</th>
+                                        <th>Operation</th>
+                                      
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                	
+                                    <tr ng-repeat="l in led">
+                                        <td>{{l.ip}}</td>
+                                        <td>{{l.type}}</td>
+                                        <td ng-show="l.status==true"> on </td>
+                                        <td ng-show="l.status==false"> off</td>
+                                        <td><a  href="" ng-show="l.status==true" ng-click="closeLED(l.ip,l.id)" data-filter="*">Turn off</a>
+                                        <a  href="" ng-click="openLED(l.ip,l.id)" ng-show="l.status==false" data-filter="*">Turn on</a></td>
+                                        
+                                    </tr>
+                                    
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+                    <div class="col-lg-6">
+                        <h2>TMP36</h2>
+                        <div class="table-responsive">
+                            <table class="table table-bordered table-hover">
+                                <thead>
+                                    <tr>
+                                        <th>IP</th>
+                                        <th>Name</th>
+                                        <th>Tempature</th>
+                                        <th>Operation</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <tr  ng-repeat="t in tmp">
+                                        <td>{{t.ip}}</td>
+                                        <td>{{t.type}}</td>
+                                        <td>{{t.tempature}}</td>
+                                        <td><a  href=""  ng-click="viewRecentTMP(t.ip,t.id)" data-filter="*">View</a></td>
+                                    </tr>
+                                    
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- /.row -->
+                <div ng-show="viewtmp==true" class="row">
+                     <div id="chart_div tmp"></div>
+                    
+                    
+                </div>
+                <div ng-show="viewdht==true" class="row">
+                     <div id="chart_div dht"></div>
+                    
+                    
+                </div>
+                <!-- /.row -->
+
+                
+                <!-- /.row -->
+
+            </div>
+            <!-- /.container-fluid -->
+
+        </div>
+        <!-- /#page-wrapper -->
+
+    </div>

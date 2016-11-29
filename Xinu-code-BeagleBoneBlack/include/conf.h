@@ -55,6 +55,7 @@ extern	struct	dentry	devtab[]; /* one entry per device */
 #define TMP36_0     27       /* type tmp36    */
 #define LED_0       28       /* type led      */
 #define LED_1       29       /* type led      */
+#define LED_2       30       /* type led      */
 
 /* Control block sizes */
 
@@ -71,10 +72,10 @@ extern	struct	dentry	devtab[]; /* one entry per device */
 #define	Nspi	2
 #define	Ndht11	1
 #define	Ntmp36	1
-#define	Nled	2
+#define	Nled	3
 
 #define DEVMAXNAME 24
-#define NDEVS 30
+#define NDEVS 31
 
 
 /* Configuration and Size Constants */
